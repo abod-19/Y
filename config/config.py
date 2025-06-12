@@ -79,7 +79,7 @@ EXTRA_PLUGINS_REPO = getenv(
 
 # Duration Limit for downloading Songs in MP3 or MP4 format from bot
 SONG_DOWNLOAD_DURATION = int(
-    getenv("SONG_DOWNLOAD_DURATION_LIMIT", "90")
+    getenv("SONG_DOWNLOAD_DURATION_LIMIT", "150")
 )  # Remember to give value in Minutes
 
 
@@ -126,7 +126,7 @@ AUTO_LEAVING_ASSISTANT = is_bool(getenv("AUTO_LEAVING_ASSISTANT", "True"))
 
 # Time after which you're assistant account will leave chats automatically.
 AUTO_LEAVE_ASSISTANT_TIME = int(
-    getenv("ASSISTANT_LEAVE_TIME", 5800)
+    getenv("ASSISTANT_LEAVE_TIME", 3600)
 )  # Remember to give value in Seconds
 
 
@@ -142,7 +142,7 @@ TELEGRAM_DOWNLOAD_EDIT_SLEEP = int(getenv("TELEGRAM_EDIT_SLEEP", "5"))
 
 
 # Your Github Repo.. Will be shown on /start Command
-GITHUB_REPO = getenv("GITHUB_REPO", "https://github.com/TheTeamVivek/YukkiMusic")
+GITHUB_REPO = getenv("GITHUB_REPO", "https://t.me/BBFYY")
 
 
 # Spotify Client.. Get it from https://developer.spotify.com/dashboard
@@ -293,19 +293,6 @@ SONG_DOWNLOAD_DURATION_LIMIT = int(time_to_seconds(f"{SONG_DOWNLOAD_DURATION}:00
 if LOG_GROUP_ID.lstrip("-").isdigit():
     LOG_GROUP_ID = int(LOG_GROUP_ID)
 
-if SUPPORT_CHANNEL:
-    if not _re.match("(?:http|https)://", SUPPORT_CHANNEL):
-        print(
-            "[ERROR] - Your SUPPORT_CHANNEL url is wrong. Please ensure that it starts with https://"
-        )
-        _sys.exit()
-
-if SUPPORT_GROUP:
-    if not _re.match("(?:http|https)://", SUPPORT_GROUP):
-        print(
-            "[ERROR] - Your SUPPORT_GROUP url is wrong. Please ensure that it starts with https://"
-        )
-        _sys.exit()
 
 if UPSTREAM_REPO:
     if not _re.match("(?:http|https)://", UPSTREAM_REPO):
