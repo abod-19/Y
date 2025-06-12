@@ -79,4 +79,4 @@ def git():
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
     install_req()
-    LOGGER(__name__).info(f"Fetched Updates from: {config.UPSTREAM_REPO}")
+    LOGGER(__name__).info(f"\n- تم رفع تحديثات السورس 🧸♥️...")
