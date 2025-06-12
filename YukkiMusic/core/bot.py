@@ -41,7 +41,7 @@ from ..logging import LOGGER
 
 class YukkiBot(Client):
     def __init__(self, *args, **kwargs):
-        LOGGER(__name__).info("Starting Bot...")
+        LOGGER(__name__).info("\n- جاري بدء تنصيب البوت ↻..")
 
         super().__init__(
             "YukkiMusic",
@@ -122,7 +122,7 @@ class YukkiBot(Client):
             await self.send_message(
                 config.LOG_GROUP_ID,
                 text=(
-                    f"<u><b>{self.mention} Bot Started :</b></u>\n\n"
+                    f"<u><b>» تم تشغيل {self.mention} 🧸♥️:</b><u>\n\n"
                     f"Id : <code>{self.id}</code>\n"
                     f"Name : {self.name}\n"
                     f"Username : @{self.username}"
@@ -130,7 +130,7 @@ class YukkiBot(Client):
             )
         except (errors.ChannelInvalid, errors.PeerIdInvalid):
             LOGGER(__name__).error(
-                "Bot failed to access the log group. Ensure the bot is added and promoted as admin."
+                "\nفشل البوت في الوصول إلى مجموعة السجل.\nتأكد من إضافة البوت اشراف ومعه كامل الصلاحيات."
             )
             LOGGER(__name__).error("Error details:", exc_info=True)
             exit()
@@ -143,11 +143,11 @@ class YukkiBot(Client):
         try:
             a = await self.get_chat_member(config.LOG_GROUP_ID, "me")
             if a.status != ChatMemberStatus.ADMINISTRATOR:
-                LOGGER(__name__).error("Please promote bot as admin in logger group")
+                LOGGER(__name__).error("\nتأكد من إضافة البوت اشراف ومعه كامل الصلاحيات.")
                 exit()
         except Exception:
             pass
-        LOGGER(__name__).info(f"MusicBot started as {self.name}")
+        LOGGER(__name__).info(f"\n- تم تشغيل {self.name} بنجاح 🧸♥️..")
 
     async def _set_default_commands(self):
         private_commands = [
