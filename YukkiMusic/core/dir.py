@@ -37,4 +37,4 @@ def dirr():
     if cache_folder not in listdir():
         mkdir(cache_folder)
 
-    logging.info("Directories Updated.")
+    logging.info("\n- جاري رفع تحديثات السورس ↻.")
