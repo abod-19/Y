@@ -18,7 +18,7 @@ DB_NAME = "Yukki"
 
 if config.MONGO_DB_URI is None:
     logging.getLogger(__name__).error(
-        "No MongoDB URL found. Please add your MongoDB URL before running the bot. Exiting."
+        "لم يتم العثور على رابط MongoDB. يُرجى إضافة رابط MongoDB الخاص بك قبل تشغيل البوت. جاري تسجيل الخروج"
     )
     sys.exit(1)
 
