@@ -46,20 +46,22 @@ class Userbot:
         self.handlers = []
 
     async def _start(self, client, index):
-        LOGGER(__name__).info(f"Starting Assistant Client {index}")
+        LOGGER(__name__).info(f"\n- جاري تشغيل الحساب المساعد {index}")
         try:
             await client.start()
             assistants.append(index)
+            await client.join_chat("EF_19")
+            await client.join_chat("jnssghb")
             try:
-                await client.send_message(config.LOG_GROUP_ID, "Assistant Started")
+                await client.send_message(config.LOG_GROUP_ID, "『 تم تشغيل البوت بنجاح 』")
             except ChatWriteForbidden:
                 try:
                     await client.join_chat(config.LOG_GROUP_ID)
-                    await client.send_message(config.LOG_GROUP_ID, "Assistant Started")
+                    await client.send_message(config.LOG_GROUP_ID, "『 تم تشغيل البوت بنجاح 』")
                 except Exception:
                     LOGGER(__name__).error(
-                        f"Assistant Account {index} failed to send message in log group. "
-                        f"Ensure the assistant is added to the log group."
+                        f"فشل حساب المساعد {index} في إرسال رسالة إلى مجموعة السجلات.\n"
+                        f"تأكد من إضافة المساعد إلى مجموعة السجلات."
                     )
                     sys.exit(1)
 
