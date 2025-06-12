@@ -327,16 +327,16 @@ class Call:
             except Exception:
                 traceback.print_exc()
                 raise AssistantErr(
-                    "**No Active Voice Chat Found**\n\nPlease make sure group's voice chat is enabled. If already enabled, please end it and start fresh voice chat again and if the problem continues, try /restart"
+                    "لم يتم العثور على دردشة صوتية نشطة"
                 )
 
         except NoActiveGroupCall:
             raise AssistantErr(
-                "**No Active Voice Chat Found**\n\nPlease make sure group's voice chat is enabled. If already enabled, please end it and start fresh voice chat again and if the problem continues, try /restart"
+                "خطاء لم يتم العثور على دردشة صوتية نشطة"
             )
         except TelegramServerError:
             raise AssistantErr(
-                "**TELEGRAM SERVER ERROR**\n\nPlease restart Your voicechat."
+                "يرجى إعادة تشغيل الدردشة الصوتية الخاصة بك"
             )
         await add_active_chat(chat_id)
         await music_on(chat_id)
@@ -663,7 +663,7 @@ class Call:
 
     async def start(self):
         """Starts all PyTgCalls instances for the existing userbot clients."""
-        logger.info("Starting PyTgCall Clients")
+        logger.info("\n  يتم تشغيل المساعد في المكالمه لاكمال التنصيب.")
         await asyncio.gather(*[c.start() for c in self.calls])
 
     async def stop(self):
