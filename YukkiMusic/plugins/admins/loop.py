@@ -19,6 +19,7 @@ from YukkiMusic.utils.decorators import AdminRightsCheck
 
 
 @app.on_message(command("LOOP_COMMAND") & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["تكرار", "التكرار"],"") & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def admins(cli, message: Message, _, chat_id):
     usage = _["admin_24"]
@@ -39,12 +40,12 @@ async def admins(cli, message: Message, _, chat_id):
             )
         else:
             return await message.reply_text(_["admin_26"])
-    elif state.lower() == "enable":
+    elif state.lower() == "enable" or state == "تفعيل":
         await set_loop(chat_id, 10)
         return await message.reply_text(
             _["admin_25"].format(message.from_user.first_name, 10)
         )
-    elif state.lower() == "disable":
+    elif state.lower() == "disable" or state == "تعطيل":
         await set_loop(chat_id, 0)
         return await message.reply_text(_["admin_27"])
     else:
