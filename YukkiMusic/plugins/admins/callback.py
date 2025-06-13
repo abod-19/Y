@@ -227,9 +227,9 @@ async def admin_callback(client, query, _):
         )
     elif command in ["Skip", "Replay"]:
         check = db.get(chat_id)
-        txt = f"» Track {command.lower()}ed by {mention} !"
 
         if command == "Skip":
+            txt = f"ـ تم التخطي \nـ بواسطة : {mention}"
             try:
                 popped = check.pop(0)
                 if popped:
@@ -250,6 +250,7 @@ async def admin_callback(client, query, _):
                 )
                 return await Yukki.stop_stream(chat_id)
         elif command == "Replay":
+            txt = f"ـ تم اعادة تشغيل المقطع\nـ بواسطة : {mention}"
             db[chat_id][0]["played"] = 0
 
         await query.answer()
