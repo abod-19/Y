@@ -45,6 +45,18 @@ from YukkiMusic.utils.stream.stream import stream
     & filters.group
     & ~BANNED_USERS
 )
+@app.on_message(
+    filters.command(
+        [
+            "تشغيل",
+            "شغل",
+            "فيديو",
+            #Nem,
+        ],""
+    )
+    & filters.group
+    & ~BANNED_USERS
+)
 @PlayWrapper
 async def play_commnd(
     client,
