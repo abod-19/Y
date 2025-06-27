@@ -15,18 +15,19 @@ from YukkiMusic.utils.database import autoend_off, autoend_on
 
 
 @app.on_message(command("AUTOEND_COMMAND") & SUDOERS)
+@app.on_message(filters.command(["مغادرة"],"") & SUDOERS)
 async def auto_end_stream(client, message):
-    usage = "**ᴜsᴀɢᴇ:**\n\n/autoend [enable|disable]"
+    usage = "<b>ᴇxᴀᴍᴘʟᴇ :</b>\n\n/مغادرة [تفعيل | تعطيل]"
     if len(message.command) != 2:
         return await message.reply_text(usage)
     state = message.text.split(None, 1)[1].strip()
     state = state.lower()
-    if state == "enable":
+    if state == "enable" or state == "تفعيل":
         await autoend_on()
         await message.reply_text(
             "Auto End enabled.\n\nBot will leave voicechat automatically after 30 secinds if one is listening song with a warning message.."
         )
-    elif state == "disable":
+    elif state == "disable" or state == "تعطيل":
         await autoend_off()
         await message.reply_text("Autoend disabled")
     else:
