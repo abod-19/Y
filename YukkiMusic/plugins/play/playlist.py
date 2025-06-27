@@ -35,6 +35,7 @@ from YukkiMusic.utils.stream.stream import stream
 
 
 @app.on_message(command("PLAYLIST_COMMAND") & ~BANNED_USERS)
+@app.on_message(filters.command(("قائمة التشغيل"),"") & ~BANNED_USERS)
 @language
 async def check_playlist(client, message: Message, _):
     _playlist = await get_playlist_names(message.from_user.id)
