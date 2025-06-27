@@ -22,6 +22,7 @@ from YukkiMusic.utils import AdminRightsCheck, seconds_to_min
 @app.on_message(
     command(["SEEK_COMMAND", "SEEK_BACK_COMMAND"]) & filters.group & ~BANNED_USERS
 )
+@app.on_message(filters.command(["تقدم", "تقديم", "ارجاع", "إرجاع"],"") & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def seek_comm(cli, message: Message, _, chat_id):
     if len(message.command) == 1:
@@ -41,7 +42,7 @@ async def seek_comm(cli, message: Message, _, chat_id):
     duration_played = int(playing[0]["played"])
     duration_to_skip = int(query)
     duration = playing[0]["dur"]
-    if message.command[0][-2] == "c":
+    if message.command[0][-2] == "c" or message.command[0][-2] == "ا":
         if (duration_played - duration_to_skip) <= 10:
             return await message.reply_text(
                 _["admin_31"].format(seconds_to_min(duration_played), duration)
@@ -68,7 +69,7 @@ async def seek_comm(cli, message: Message, _, chat_id):
         )
     except Exception:
         return await mystic.edit_text(_["admin_34"])
-    if message.command[0][-2] == "c":
+    if message.command[0][-2] == "c" or message.command[0][-2] == "ا":
         db[chat_id][0]["played"] -= duration_to_skip
     else:
         db[chat_id][0]["played"] += duration_to_skip
