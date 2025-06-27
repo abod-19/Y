@@ -20,6 +20,7 @@ from YukkiMusic.utils.decorators import AdminRightsCheck
 
 
 @app.on_message(command("PAUSE_COMMAND") & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["ايقاف مؤقت","إيقاف مؤقت","وقف", "توقف"], "") & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def pause_admin(cli, message: Message, _, chat_id):
     if not len(message.command) == 1:
