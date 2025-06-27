@@ -23,6 +23,7 @@ from YukkiMusic.utils.stream.stream import stream
 
 
 @app.on_message(command("STREAM_COMMAND") & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["لايف"],"") & filters.group & ~BANNED_USERS)
 @PlayWrapper
 async def stream_command(
     client,
