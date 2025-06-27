@@ -24,6 +24,7 @@ from YukkiMusic.utils.inline.settings import playmode_users_markup
 
 
 @app.on_message(command("PLAYMODE_COMMAND") & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["وضع التشغيل"],"") & filters.group & ~BANNED_USERS)
 @language
 async def playmode_(client, message: Message, _):
     playmode = await get_playmode(message.chat.id)
