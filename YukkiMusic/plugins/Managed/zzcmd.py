@@ -4,10 +4,10 @@ from strings.filters import command
 from pyrogram.types import InlineKeyboardButton, CallbackQuery, InlineKeyboardMarkup, Message
 from typing import Union
 from pyrogram.types import InlineKeyboardButton
-from ZeMusic import app
-from ZeMusic.misc import HAPP, SUDOERS, XCB
-from config import OWNER_ID
+from YukkiMusic import app
+from YukkiMusic.misc import HAPP, SUDOERS, XCB
 import config
+
 lnk= "https://t.me/" +config.CHANNEL_LINK
                                        
 @app.on_callback_query(filters.regex("zzzback"))
