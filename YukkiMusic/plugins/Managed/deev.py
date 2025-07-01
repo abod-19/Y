@@ -5,11 +5,11 @@ import requests
 from config import START_IMG_URL, OWNER_ID
 from pyrogram import Client, filters, emoji
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from ZeMusic import app
+from YukkiMusic import app
 
 @app.on_message(filters.text & filters.regex(r"^\.$"))
 async def huhh(client: Client, message: Message):
-    dev = await client.get_users(OWNER_ID)
+    dev = await client.get_users(OWNER_ID[0])
     name = dev.first_name
 
     await message.reply(
