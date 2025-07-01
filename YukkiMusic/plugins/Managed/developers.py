@@ -2,7 +2,7 @@ import os
 from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
-from ZeMusic import app
+from YukkiMusic import app
 
 @app.on_message(filters.regex(r"^(المبرمج|مبرمج السورس|مبرمج|مطور السورس)$"))
 async def huhh(c: Client, m: Message):
