@@ -110,8 +110,8 @@ GIT_TOKEN = getenv(
     "GIT_TOKEN",
     "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",
 )
-
-
+CHANNEL_LINK = getenv("CHANNEL_LINK", "WG_19")
+CHANNEL_NAME = getenv("CHANNEL_NAME", "اقتباسات")
 # Only  Links formats are  accepted for this Var value.
 SUPPORT_CHANNEL = getenv(
     "SUPPORT_CHANNEL", "https://t.me/WG_19"
