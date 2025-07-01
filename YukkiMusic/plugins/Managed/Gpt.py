@@ -7,7 +7,7 @@ from pyrogram.types import Message
 from pyrogram.enums import ChatAction, ParseMode
 
 from lexica import AsyncClient, languageModels, Messages
-from ZeMusic import app
+from YukkiMusic import app
 
 
 def get_prompt(message: Message) -> str | None:
