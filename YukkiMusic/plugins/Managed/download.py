@@ -6,11 +6,11 @@ import yt_dlp
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from youtube_search import YoutubeSearch
-from ZeMusic.platforms.Youtube import cookies
-from ZeMusic import app
-from ZeMusic.plugins.play.filters import command
-from ZeMusic.utils.database import iffcook, enable_iff, disable_iff
-from ZeMusic.core.mongo import mongodb
+from YukkiMusic.platforms.Youtube import cookies
+from YukkiMusic import app
+from YukkiMusic.plugins.play.filters import command
+from YukkiMusic.utils.database import iffcook, enable_iff, disable_iff
+from YukkiMusic.core.mongo import mongodb
 
 def remove_if_exists(path):
     if os.path.exists(path):
