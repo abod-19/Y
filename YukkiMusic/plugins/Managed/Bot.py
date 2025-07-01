@@ -1,5 +1,5 @@
 import asyncio
-from ZeMusic import app 
+from YukkiMusic import app 
 import random
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
