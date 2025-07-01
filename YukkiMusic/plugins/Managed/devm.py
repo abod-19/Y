@@ -1,7 +1,7 @@
 import os
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from ZeMusic import app
+from YukkiMusic import app
 from config import OWNER_ID, BOT_NAME
 import config
 
@@ -9,7 +9,7 @@ lnk = "https://t.me/" + config.CHANNEL_LINK
 
 @app.on_message(filters.regex(r"^(المطور|مطور)$"))
 async def devid(c: Client, m: Message):
-    usr = await c.get_users(OWNER_ID)
+    usr = await c.get_users(OWNER_ID[0])
     name = usr.first_name
     usrnam = usr.username
     idd = usr.id
