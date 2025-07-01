@@ -3,7 +3,7 @@ import requests
 from typing import Optional
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
-from ZeMusic import app
+from YukkiMusic import app
 from strings.filters import command
 
 #---------------FUNCTION---------------#
