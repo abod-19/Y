@@ -11,13 +11,13 @@ from YukkiMusic.plugins.play.filters import command
 from YukkiMusic.core.mongo import mongodb
 
 def cookies():
-    folder_path = f"{os.getcwd()}/cookies"
+    folder_path = os.path.join(os.getcwd(), "config", "cookies")
     txt_files = glob.glob(os.path.join(folder_path, "*.txt"))
     if not txt_files:
-        raise FileNotFoundError("No .txt files found in the specified fo>
+        raise FileNotFoundError("No .txt files found in the specified folder.")
     cookie_txt_file = random.choice(txt_files)
-    return f"""config/cookies/{str(cookie_txt_file).split("/")[-1]}"""
-
+    return f"config/cookies/{os.path.basename(cookie_txt_file)}"
+    
 def remove_if_exists(path):
     if os.path.exists(path):
         os.remove(path)
