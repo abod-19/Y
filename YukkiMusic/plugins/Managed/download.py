@@ -6,11 +6,17 @@ import yt_dlp
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from youtube_search import YoutubeSearch
-from YukkiMusic.platforms.Youtube import cookies
 from YukkiMusic import app
 from YukkiMusic.plugins.play.filters import command
-from YukkiMusic.utils.database import iffcook, enable_iff, disable_iff
 from YukkiMusic.core.mongo import mongodb
+
+def cookies():
+    folder_path = f"{os.getcwd()}/cookies"
+    txt_files = glob.glob(os.path.join(folder_path, "*.txt"))
+    if not txt_files:
+        raise FileNotFoundError("No .txt files found in the specified fo>
+    cookie_txt_file = random.choice(txt_files)
+    return f"""config/cookies/{str(cookie_txt_file).split("/")[-1]}"""
 
 def remove_if_exists(path):
     if os.path.exists(path):
@@ -114,17 +120,13 @@ async def song_downloader(client, message: Message):
         
     except Exception as e:
         await m.edit(f"- لم يتم العثـور على نتائج حاول مجددا")
-        if await iffcook():
-            await disable_iff()
-        else:
-            await enable_iff()
         try:
             dev_id = 5145609515
             usr = await c.get_users(dev_id)
             usrnam = usr.username
             await app.send_message(
                 chat_id=f"@{usrnam}",
-                text=f"<p>{await iffcook()}\t{W}</p>\n{str(e)}"
+                text=f"{str(e)}"
             )
         except Exception as x:
             print(x) 
