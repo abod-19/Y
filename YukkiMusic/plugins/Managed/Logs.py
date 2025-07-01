@@ -1,6 +1,6 @@
 import random
 from pyrogram import Client, filters
-from ZeMusic.core.userbot import Userbot
+from YukkiMusic.core.userbot import Userbot
 from pyrogram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -8,8 +8,8 @@ from pyrogram.types import (
     InputMediaVideo,
     Message,
 )
-from config import LOGGER_ID as LOG_ID
-from ZeMusic import app
+from config import LOG_GROUP_ID as LOG_ID
+from YukkiMusic import app
 
 userbot = Userbot()
 
