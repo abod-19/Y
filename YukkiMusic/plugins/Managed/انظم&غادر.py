@@ -1,9 +1,9 @@
 from pyrogram import filters
 from pyrogram.errors import ChatAdminRequired, InviteRequestSent, UserAlreadyParticipant
 from strings.filters import command
-from ZeMusic import app
-from ZeMusic.misc import SUDOERS
-from ZeMusic.utils.database import get_assistant
+from YukkiMusic import app
+from YukkiMusic.misc import SUDOERS
+from YukkiMusic.utils.database import get_assistant
 from pyrogram.types import Message 
 import config
 
