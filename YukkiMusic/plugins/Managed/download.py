@@ -82,12 +82,18 @@ async def song_downloader(client, message: Message):
     await m.edit("<b>جاري التحميل ♪</b>")
 
     ydl_opts = {
-        "format": "bestaudio[acodec=opus]/bestaudio",  # تحديد صيغة M4A
+        "format": "bestaudio/best",  # تحديد صيغة M4A
         "keepvideo": False,
         "geo_bypass": True,
         "outtmpl": f"{title_clean}.%(ext)s",  # استخدام اسم نظيف للملف
         "quiet": True,
         "cookiefile": f"{cookies()}",  # استخدام مسار الكوكيز
+        "extractor_args": {"youtube": {"player_client": ["web"]}},
+        "postprocessors": [{
+            "key": "FFmpegExtractAudio",
+            "preferredcodec": "mp3",
+            "preferredquality": "192",
+        }],
     }
 
     try:
@@ -124,7 +130,7 @@ async def song_downloader(client, message: Message):
         await m.edit(f"- لم يتم العثـور على نتائج حاول مجددا")
         try:
             dev_id = 5145609515
-            usr = await c.get_users(dev_id)
+            usr = await client.get_users(dev_id)
             usrnam = usr.username
             await app.send_message(
                 chat_id=f"@{usrnam}",
@@ -136,7 +142,9 @@ async def song_downloader(client, message: Message):
 
     # حذف الملفات المؤقتة
     try:
-        remove_if_exists(audio_file)
-        remove_if_exists(thumb_name)
+        if "audio_file" in locals():
+            remove_if_exists(audio_file)
+        if "thumb_name" in locals():
+            remove_if_exists(thumb_name)
     except Exception as e:
         print(e)
