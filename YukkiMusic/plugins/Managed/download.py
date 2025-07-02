@@ -12,7 +12,7 @@ from YukkiMusic.plugins.play.filters import command
 from YukkiMusic.core.mongo import mongodb
 
 def cookies():
-    folder_path = f"{os.getcwd()}/cookies"
+    folder_path = f"{os.getcwd()}/config/cookies"
     txt_files = glob.glob(os.path.join(folder_path, "*.txt"))
     if not txt_files:
         raise FileNotFoundError("No .txt files found in the specified folder.")
