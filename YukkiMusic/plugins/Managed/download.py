@@ -6,20 +6,22 @@ import requests
 import config
 import yt_dlp
 from pyrogram import Client, filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from YukkiMusic import app
 from YukkiMusic.plugins.play.filters import command
 from YukkiMusic.core.mongo import mongodb
 
+# استخراج ملف كوكيز عشوائي من مجلد cookies
 def cookies():
     folder_path = f"{os.getcwd()}/config/cookies"
     txt_files = glob.glob(os.path.join(folder_path, "*.txt"))
     if not txt_files:
         raise FileNotFoundError("No .txt files found in the specified folder.")
     cookie_txt_file = random.choice(txt_files)
-    return f"""config/cookies/{str(cookie_txt_file).split("/")[-1]}"""
+    return os.path.join(folder_path, os.path.basename(cookie_txt_file))
 
+# حذف الملفات المؤقتة إن وجدت
 def remove_if_exists(path):
     if os.path.exists(path):
         os.remove(path)
@@ -43,7 +45,7 @@ async def song_downloader(client, message: Message):
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         if not results:
-            await m.edit("- لم يتم العثـور على نتائج حاول مجددا")
+            await m.edit("- لم يتم العثور على نتائج، حاول مجددًا.")
             return
 
         video_id = results[0]['id']
@@ -65,7 +67,7 @@ async def song_downloader(client, message: Message):
         
         link = f"https://youtube.com{results[0]['url_suffix']}"
         title = results[0]["title"][:40]
-        title_clean = re.sub(r'[\\/*?:"<>|]', "", title)  # تنظيف اسم الملف
+        title_clean = re.sub(r'[\\/*?:"<>|]', "", title)
         thumbnail = results[0]["thumbnails"][0]
         thumb_name = f"{title_clean}.jpg"
         
@@ -75,20 +77,24 @@ async def song_downloader(client, message: Message):
         duration = results[0]["duration"]
 
     except Exception as e:
-        await m.edit("- لم يتم العثـور على نتائج حاول مجددا")
+        await m.edit("- لم يتم العثور على نتائج، حاول مجددًا.")
         print(str(e))
         return
     
     await m.edit("<b>جاري التحميل ♪</b>")
 
     ydl_opts = {
-        "format": "bestaudio/best",  # تحديد صيغة M4A
+        "format": "bestaudio/best",
         "keepvideo": False,
         "geo_bypass": True,
-        "outtmpl": f"{title_clean}.%(ext)s",  # استخدام اسم نظيف للملف
+        "outtmpl": f"{title_clean}.%(ext)s",
         "quiet": True,
-        "cookiefile": f"{cookies()}",  # استخدام مسار الكوكيز
-        "extractor_args": {"youtube": {"player_client": ["web"]}},
+        "cookiefile": cookies(),
+        "extractor_args": {
+            "youtube": {
+                "player_client": ["web"]
+            }
+        },
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
             "preferredcodec": "mp3",
@@ -98,7 +104,7 @@ async def song_downloader(client, message: Message):
 
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info_dict = ydl.extract_info(link, download=True)  # التنزيل مباشرة
+            info_dict = ydl.extract_info(link, download=True)
             audio_file = ydl.prepare_filename(info_dict)
             
         duration = results[0].get("duration", "0:00")
@@ -114,7 +120,7 @@ async def song_downloader(client, message: Message):
         )
 
         message_to_channel = await app.send_audio(
-            chat_id="@IC_l9",  # إرسال الرسالة إلى القناة
+            chat_id="@IC_l9",
             audio=audio_file,
             caption=f"{results[0]['id']}",
             title=title,
@@ -127,7 +133,7 @@ async def song_downloader(client, message: Message):
         await songdb.insert_one({"video_id": video_id, "channel_link": channel_link})
         
     except Exception as e:
-        await m.edit(f"- لم يتم العثـور على نتائج حاول مجددا")
+        await m.edit("- تعذر تحميل الملف الصوتي، قد لا يكون متاحًا بصيغة صوتية.")
         try:
             dev_id = 5145609515
             usr = await client.get_users(dev_id)
@@ -140,7 +146,6 @@ async def song_downloader(client, message: Message):
             print(x) 
         print(e)
 
-    # حذف الملفات المؤقتة
     try:
         if "audio_file" in locals():
             remove_if_exists(audio_file)
