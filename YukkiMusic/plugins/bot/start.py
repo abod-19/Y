@@ -80,7 +80,7 @@ async def start_comm(client, message: Message, _):
                 disable_web_page_preview=True,
             )
         if name[0:3] == "sta":
-            m = await message.reply_text("🔎 Fetching Your personal stats.!")
+            m = await message.reply_text("- جلب الإحصائيات الخاصة بك.")
             stats = await get_userss(message.from_user.id)
             tot = len(stats)
             if not stats:
@@ -265,9 +265,9 @@ async def welcome(client, message: Message):
             _ = get_string(language)
             if member.id == app.id:
                 chat_type = message.chat.type
-                if chat_type != ChatType.SUPERGROUP:
-                    await message.reply_text(_["start_5"])
-                    return await app.leave_chat(message.chat.id)
+                #if chat_type != ChatType.SUPERGROUP:
+                    #await message.reply_text(_["start_5"])
+                    #return await app.leave_chat(message.chat.id)
                 if chat_id in await blacklisted_chats():
                     await message.reply_text(
                         _["start_6"].format(
@@ -285,14 +285,14 @@ async def welcome(client, message: Message):
                     ),
                     reply_markup=InlineKeyboardMarkup(out),
                 )
-            if member.id in config.OWNER_ID:
-                return await message.reply_text(
-                    _["start_3"].format(app.mention, member.mention)
-                )
-            if member.id in SUDOERS:
-                return await message.reply_text(
-                    _["start_4"].format(app.mention, member.mention)
-                )
+            #if member.id in config.OWNER_ID:
+                #return await message.reply_text(
+                    #_["start_3"].format(app.mention, member.mention)
+                #)
+            #if member.id in SUDOERS:
+                #return await message.reply_text(
+                    #_["start_4"].format(app.mention, member.mention)
+                #)
             return
         except Exception:
             return
