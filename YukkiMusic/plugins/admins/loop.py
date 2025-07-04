@@ -51,4 +51,4 @@ async def admins(cli, message: Message, _, chat_id):
         await set_loop(chat_id, 0)
         return await message.reply_text(_["admin_27"])
     else:
-        return await message.reply_text(usage)
+        return #await message.reply_text(usage)
