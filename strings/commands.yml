@@ -112,7 +112,7 @@ QUEUE_COMMAND:
   tr: ["csira", "sira"]
 
 SONG_COMMAND:
-  ar: ["تنزيل", "بحث", "يوت"]
+  ar: ["تنزيل1", "بحث1", "يوت1"]
   ckb: ["گۆرانی", "ڤیدیۆ", "داگرتن"]
   en: ["song", "video"]
   tr: ["sarki", "muzik", "indir"]
@@ -124,19 +124,19 @@ LYRICS_COMMAND:
   tr: ["sarkisozu"]
 
 AUTH_COMMAND:
-  ar: ["رفع ادمن"]
+  ar: ["/رفع"]
   ckb: ["زیادکردنی ئەدمین"]
   en: ["auth"]
   tr: ["yetki", "yetkiver"]
 
 UNAUTH_COMMAND:
-  ar: ["تنزيل ادمن"]
+  ar: ["/تنزيل"]
   ckb: ["لادانی ئەدمین"]
   en: ["unauth"]
   tr: ["yetkial"]
 
 AUTHUSERS_COMMAND:
-  ar: ["الادمنيه"]
+  ar: ["الادمنيه/", "/الادمن"]
   ckb: ["ئەدمینەکان"]
   en: ["authusers"]
   tr: ["yetkililer"]
