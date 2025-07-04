@@ -24,7 +24,9 @@ from YukkiMusic.utils.decorators import AdminRightsCheck
 async def admins(cli, message: Message, _, chat_id):
     usage = _["admin_24"]
     if len(message.command) != 2:
-        return await message.reply_text(usage)
+        if message.text in ["تكرار", "التكرار"]:
+            return await message.reply_text(usage)
+        return
     state = message.text.split(None, 1)[1].strip()
     if state.isnumeric():
         state = int(state)
