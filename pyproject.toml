@@ -57,9 +57,9 @@ dependencies = [
 include = ["YukkiMusic", "config", "strings"]
 
 [project.urls]
-Repository = "https://github.com/TheTeamVivek/YukkiMusic"
-Issues = "https://github.com/TheTeamVivek/YukkiMusic/issues"
-Changelog = "https://github.com/TheTeamVivek/YukkiMusic/blob/master/CHANGELOG.md"
+Repository = "https://github.com/abod-19/Y"
+Issues = "https://github.com/abod-19/Y/issues"
+Changelog = "https://github.com/abod-19/Y/blob/master/CHANGELOG.md"
 
 [project.scripts]
-yukkimusic = "YukkiMusic.__main__:main"
+ymusic = "YukkiMusic.__main__:main"
