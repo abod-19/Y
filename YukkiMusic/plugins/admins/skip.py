@@ -76,7 +76,7 @@ async def skip(cli, message: Message, _, chat_id):
             else:
                 return await message.reply_text(_["queue_2"])
         else:
-            return await message.reply_text(_["admin_13"])
+            return #await message.reply_text(_["admin_13"])
     else:
         check = db.get(chat_id)
         popped = None
