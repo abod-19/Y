@@ -1,16 +1,9 @@
-#
-# Copyright (C) 2024-2025 by TheTeamVivek@Github, < https://github.com/TheTeamVivek >.
-#
-# This file is part of < https://github.com/TheTeamVivek/YukkiMusic > project,
-# and is released under the MIT License.
-# Please see < https://github.com/TheTeamVivek/YukkiMusic/blob/master/LICENSE >
-#
 # All rights reserved.
 #
 
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-
+from ZeMusic.utils.database import get_served_chats
 from config import LOG, LOG_GROUP_ID
 from YukkiMusic import app
 from YukkiMusic.utils.database import (
@@ -19,13 +12,21 @@ from YukkiMusic.utils.database import (
     is_on_off,
 )
 
+photo_urls = [
+    "https://envs.sh/Wi_.jpg",
+    "https://envs.sh/Wi_.jpg",
+    "https://envs.sh/Wi_.jpg",
+    "https://envs.sh/Wi_.jpg",
+    "https://envs.sh/Wi_.jpg",
+]
 
 @app.on_message(filters.new_chat_members)
 async def on_bot_added(_, message):
+    served_chats = len(await get_served_chats())
     try:
-        if not await is_on_off(LOG):
-            return
-        userbot = await get_assistant(message.chat.id)
+        #if not await is_on_off(LOG):
+            #return
+        #userbot = await get_assistant(message.chat.id)
         chat = message.chat
         for members in message.new_chat_members:
             if members.id == app.id:
@@ -34,29 +35,32 @@ async def on_bot_added(_, message):
                     message.chat.username if message.chat.username else "ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀᴛ"
                 )
                 msg = (
-                    f"**Music bot added in new Group #New_Group**\n\n"
-                    f"**Chat Name:** {message.chat.title}\n"
-                    f"**Chat Id:** {message.chat.id}\n"
-                    f"**Chat Username:** @{username}\n"
-                    f"**Chat Member Count:** {count}\n"
-                    f"**Added By:** {message.from_user.mention}"
+                    f"🌹 تمت إضافة البوت إلى مجموعة جديدة.\n\n"
+                    f"┏━━━━━━━━━━━━━━━━━┓\n"
+                    f"┣★ <b>𝙲𝙷𝙰𝚃</b> › : {message.chat.title}\n"
+                    f"┣★ <b>𝙲𝙷𝙰𝚃 𝙸𝙳</b> › : {message.chat.id}\n"
+                    f"┣★ <b>𝙲𝙷𝙰𝚃 𝚄𝙽𝙰𝙼𝙴</b> › : @{username}\n"
+                    f"┣★ <b>𝙲𝙾𝚄𝙽𝚃</b> › : {count}\n"
+                    f"┣★ <b>𝚃𝙾𝚃𝙰𝙻 𝙲𝙷𝙰𝚃𝚂</b> › : {served_chats}\n"
+                    f"┗━━━ꪜ <a href='tg://user?id={message.from_user.id}'>{message.from_user.first_name}</a>"
                 )
-                await app.send_message(
+                await app.send_photo(
                     LOG_GROUP_ID,
-                    text=msg,
+                    photo=random.choice(photo_urls),
+                    caption=msg,
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
                                 InlineKeyboardButton(
-                                    text=f"Added by: {message.from_user.first_name}",
+                                    text=f"{message.from_user.first_name}",
                                     user_id=message.from_user.id,
                                 )
                             ]
                         ]
                     ),
                 )
-                if message.chat.username:
-                    await userbot.join_chat(message.chat.username)
+                #if message.chat.username:
+                    #await userbot.join_chat(message.chat.username)
     except Exception:
         pass
 
@@ -64,8 +68,8 @@ async def on_bot_added(_, message):
 @app.on_message(filters.left_chat_member)
 async def on_bot_kicked(_, message: Message):
     try:
-        if not await is_on_off(LOG):
-            return
+        #if not await is_on_off(LOG):
+            #return
         userbot = await get_assistant(message.chat.id)
 
         left_chat_member = message.left_chat_member
@@ -79,21 +83,22 @@ async def on_bot_kicked(_, message: Message):
             )
             chat_id = message.chat.id
             left = (
-                f"Bot was Removed in {title} #Left_group\n"
+                f"✫ <b><u>ـ تم طرد البوت من المجموعه</u></b> :\n"
                 f"**Chat Name**: {title}\n"
                 f"**Chat Id**: {chat_id}\n"
                 f"**Chat Username**: {username}\n"
                 f"**Removed By**: {remove_by}"
             )
 
-            await app.send_message(
+            await app.send_photo(
                 LOG_GROUP_ID,
-                text=left,
+                photo=random.choice(photo_urls),
+                caption=left,
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text=f"Removed By: {message.from_user.first_name}",
+                                text=f"{message.from_user.first_name}",
                                 user_id=message.from_user.id,
                             )
                         ]
