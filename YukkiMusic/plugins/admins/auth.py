@@ -29,11 +29,14 @@ from YukkiMusic.utils.formatters import int_to_alpha
 async def auth(client, message: Message, _):
     if not message.reply_to_message:
         if len(message.command) != 2:
-            return await message.reply_text(_["general_1"])
+            return #await message.reply_text(_["general_1"])
         user = message.text.split(None, 1)[1]
         if "@" in user:
             user = user.replace("@", "")
-        user = await app.get_users(user)
+        try:
+            user = await app.get_users(user)
+        except Exception:
+            return
         user_id = message.from_user.id
         token = await int_to_alpha(user.id)
         from_user_name = message.from_user.first_name
