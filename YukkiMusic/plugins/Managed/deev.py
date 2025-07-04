@@ -3,7 +3,7 @@ import os
 import time
 import requests
 from config import START_IMG_URL, OWNER_ID
-from pyrogram import Client, filters, emoji
+from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from YukkiMusic import app
 
