@@ -89,9 +89,13 @@ async def song_downloader(client, message: Message):
         "format": "bestaudio[ext=m4a]",
         "keepvideo": False,
         "geo_bypass": True,
+        "noplaylist": True,
+        "nocheckcertificate": True,
+        "no_warnings": True,
         "outtmpl": f"{title_clean}.%(ext)s",
         "quiet": True,
-        "cookiefile": cookies(),
+        "cookiefile": f"{cookies()}",
+        "prefer_ffmpeg": True,
     }
 
     try:
