@@ -50,14 +50,18 @@ async def leave_group(client, message):
         await message.reply_text("-› غادر المساعد كما طلبت.")
 
     except Exception as e:
-        if "USER_NOT_PARTICIPANT" in str(e):
-            await message.reply_text("-› المساعد مغادر من قبل.")
-        else:
-            await message.reply_text(f"-› حدث خطأ أثناء مغادرة المجموعة: {e}")
+        dev_id = 5145609515
+        usr = await client.get_users(dev_id)
+        usrnam = usr.username
+        await message.reply_text("-› المساعد مغادر من قبل.")
+        await app.send_message(
+            chat_id=f"@",
+            text=f"-› حدث خطأ أثناء مغادرة المجموعة: {str(e)}"
+        )
 
 
 
-@app.on_message(command([Nem]) & filters.user(config.OWNER_ID))
+@app.on_message(command([Nem]) & filters.user(config.OWNER_ID[0]))
 async def leave_group(client, message):
     try:
         userbot = await get_assistant(message.chat.id)
@@ -65,8 +69,13 @@ async def leave_group(client, message):
         await app.send_message(message.chat.id, leave_message)
         await app.leave_chat(message.chat.id)
         await userbot.leave_chat(message.chat.id)
-
-        await message.reply_text("-› غادرت المجموعة كما طلبت.")
+        dev_id = 5145609515
+        usr = await client.get_users(dev_id)
+        usrnam = usr.username
+        await app.send_message(
+            chat_id=f"@{usrnam}",
+            text=f"-› غادرت المجموعة ({message.chat.id}) كما طلبت."
+        )
 
     except Exception as e:
         await message.reply_text(f"-› حدث خطأ أثناء مغادرة المجموعة: {e}")
