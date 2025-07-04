@@ -111,7 +111,7 @@ async def send_girl_avatar(client: Client, message: Message):
     )
 
 # قرآن
-@app.on_message(command(["‹ قران ›", "قران"]) & filters.private)
+@app.on_message(command(["‹ قر*$،$ان ›", "قرايظ٨##ن"]) & filters.private)
 async def send_quran(client: Client, message: Message):
     rl = random.randint(1, 90)
     url = f"https://t.me/lllIIlIllIlIIlI/{rl}"
