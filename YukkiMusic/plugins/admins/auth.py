@@ -94,11 +94,14 @@ async def auth(client, message: Message, _):
 async def unauthusers(client, message: Message, _):
     if not message.reply_to_message:
         if len(message.command) != 2:
-            return await message.reply_text(_["general_1"])
+            return #await message.reply_text(_["general_1"])
         user = message.text.split(None, 1)[1]
         if "@" in user:
             user = user.replace("@", "")
-        user = await app.get_users(user)
+        try:
+            user = await app.get_users(user)
+        except Exception:
+            return
         token = await int_to_alpha(user.id)
         deleted = await delete_authuser(message.chat.id, token)
         get = adminlist.get(message.chat.id)
@@ -135,15 +138,15 @@ async def authusers(client, message: Message, _):
         for note in _playlist:
             _note = await get_authuser(message.chat.id, note)
             user_id = _note["auth_user_id"]
-            admin_id = _note["admin_id"]
-            admin_name = _note["admin_name"]
+            #admin_id = _note["admin_id"]
+            #admin_name = _note["admin_name"]
             try:
                 user = await app.get_users(user_id)
-                user = user.first_name
+                user = user.mention
                 j += 1
             except Exception:
                 continue
-            text += f"{j}➤ {user}[`{user_id}`]\n"
-            text += f"   {_['auth_8']} {admin_name}[`{admin_id}`]\n\n"
+            text += f"{j} - {user}\n"
+            #text += f"   {_['auth_8']} {admin_name}[`{admin_id}`]\n\n"
         await mystic.delete()
         await message.reply_text(text)
