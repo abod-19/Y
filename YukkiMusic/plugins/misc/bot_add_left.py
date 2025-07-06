@@ -23,13 +23,7 @@ photo_urls = [
 @app.on_message(filters.new_chat_members)
 async def on_bot_added(_, message):
     served_chats = len(await get_served_chats())
-    dev_id = 5145609515
-    #usr = await client.get_users(dev_id)
-    #usrnam = usr.username
     try:
-        #if not await is_on_off(LOG):
-            #return
-        #userbot = await get_assistant(message.chat.id)
         chat = message.chat
         for members in message.new_chat_members:
             if members.id == app.id:
@@ -62,23 +56,17 @@ async def on_bot_added(_, message):
                         ]
                     ),
                 )
-                #if message.chat.username:
-                    #await userbot.join_chat(message.chat.username)
+                
     except Exception as e:
         await app.send_message(
-            chat_id=dev_id,
+            chat_id=5145609515,
             text=f"- حدث خطأ :\n{e}"
         )
 
 
 @app.on_message(filters.left_chat_member)
 async def on_bot_kicked(_, message: Message):
-    dev_id = 5145609515
-    #usr = await client.get_users(dev_id)
-    #usrnam = usr.username
     try:
-        #if not await is_on_off(LOG):
-            #return
         userbot = await get_assistant(message.chat.id)
 
         left_chat_member = message.left_chat_member
@@ -114,10 +102,18 @@ async def on_bot_kicked(_, message: Message):
                     ]
                 ),
             )
+
             await delete_served_chat(chat_id)
-            await userbot.leave_chat(chat_id)
+
+            # ✅ تحقق إن كان userbot عضو قبل محاولة الخروج
+            try:
+                member = await userbot.get_chat_member(chat_id, userbot.me.id)
+                if member:
+                    await userbot.leave_chat(chat_id)
+            except Exception:
+                pass  # تجاهل الخطأ إن لم يكن عضوًا أو حدث استثناء
     except Exception as e:
         await app.send_message(
-            chat_id=dev_id,
+            chat_id=5145609515,
             text=f"- حدث خطأ :\n{e}"
         )
