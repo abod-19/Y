@@ -274,18 +274,18 @@ async def update_(client, message, _):
 
     try:
         served_chats = await get_active_chats()
-        for x in served_chats:
-            try:
-                await app.send_message(
-                    chat_id=int(x),
-                    text="{} Is upadted herself\n\nYou can start playing after 15-20 Seconds".format(
-                        app.mention
-                    ),
-                )
-                await remove_active_chat(x)
-                await remove_active_video_chat(x)
-            except Exception:
-                pass
+        #for x in served_chats:
+            #try:
+                #await app.send_message(
+                    #chat_id=int(x),
+                    #text="{} Is upadted herself\n\nYou can start playing after 15-20 Seconds".format(
+                        #app.mention
+                    #),
+                #)
+                #await remove_active_chat(x)
+                #await remove_active_video_chat(x)
+            #except Exception:
+                #pass
         await response.edit(
             _final_updates_
             + f"» Bot Upadted Sucessfully Now wait until the bot starts",
@@ -320,7 +320,7 @@ async def update_(client, message, _):
 @AdminActual
 async def reboot(client, message: Message, _):
     mystic = await message.reply_text(
-        f"Please Wait... \nRebooting{app.mention} For Your Chat."
+        f"- جاري إعادة تشغيل البوت لمحادثتك."
     )
     await asyncio.sleep(1)
     try:
@@ -339,7 +339,7 @@ async def reboot(client, message: Message, _):
             await Yukki.stop_stream(chat_id)
         except Exception:
             pass
-    return await mystic.edit_text("Sucessfully Restarted \nTry playing Now..")
+    return await mystic.edit_text("- تم إعادة تشغيل البوت.\n- ابدأ التشغيل مجدداً.")
 
 
 @app.on_message(command("RESTART_COMMAND") & ~BANNED_USERS)
@@ -348,18 +348,18 @@ async def restart_(client, message):
         if message.chat.type not in [ChatType.GROUP, ChatType.SUPERGROUP]:
             return
         return await reboot(client, message)
-    response = await message.reply_text("Restarting...")
+    response = await message.reply_text("جاري اعادة تشغيل.")
     ac_chats = await get_active_chats()
-    for x in ac_chats:
-        try:
-            await app.send_message(
-                chat_id=int(x),
-                text=f"{app.mention} Is restarting...\n\nYou can start playing after 15-20 seconds",
-            )
-            await remove_active_chat(x)
-            await remove_active_video_chat(x)
-        except Exception:
-            pass
+    #for x in ac_chats:
+        #try:
+            #await app.send_message(
+                #chat_id=int(x),
+                #text=f"{app.mention} Is restarting...\n\nYou can start playing after 15-20 seconds",
+            #)
+            #await remove_active_chat(x)
+            #await remove_active_video_chat(x)
+        #except Exception:
+            #pass
 
     try:
         shutil.rmtree("downloads")
@@ -368,6 +368,6 @@ async def restart_(client, message):
     except Exception:
         pass
     await response.edit_text(
-        "Restart process started, please wait for few seconds until the bot starts..."
+        "ᯓ ⌯ 𝚂𝙾𝚄𝚁𝙲𝙴 𝙺𝙸𝙽𝙶 🝢 إعــادة التشغيــل\n•─────────────────•\n\n•⎆┊يتـم الان اعـادة تشغيـل بـوت ميوزك\n•⎆┊قـد يستغـرق الامـر 3-5 دقائـق."
     )
     os.system(f"kill -9 {os.getpid()} && python3 -m YukkiMusic")
