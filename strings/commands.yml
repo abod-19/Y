@@ -40,19 +40,19 @@ RELOAD_COMMAND:
   tr: ["admincache", "reload"]
 
 GSTATS_COMMAND:
-  ar: ["الاحصائيات", "احصائيات"]
+  ar: ["/توب"]
   ckb: ["ئاماری گشتی", "ئامارەکان"]
   en: ["gstats"]
   tr: ["gstats"]
 
 STATS_COMMAND:
-  ar: ["إحصائيات"]
+  ar: ["إحصائيات" ,"الاحصائيات", "ترند"]
   ckb: ["ئامار"]
   en: ["stats"]
   tr: ["stats"]
 
 LANGUAGE_COMMAND:
-  ar: ["لغه", "اللغه"]
+  ar: ["اللغه" ,"اللغة"]
   ckb: ["زمان", "زمانەکان"]
   en: ["lang", "language", "langs"]
   tr: ["dil", "diller"]
@@ -64,7 +64,7 @@ PLAY_COMMAND:
   tr: ["oynat", "voynat", "coynat"]
 
 PLAYMODE_COMMAND:
-  ar: ["وضع تشغيل", "المصرحين"]
+  ar: ["وضع تشغيل"]
   ckb: ["دۆخی لێدان", "دۆخی کارکردن", "دۆخی پەخشکردن"]
   en: ["playmode"]
   tr: ["oynatmamodu"]
@@ -88,7 +88,7 @@ PLAYLIST_COMMAND:
   tr: ["oynatmalistesi"]
 
 PLAY_PLAYLIST_COMMAND:
-  ar: ["شغل قائمتي", "تشغيل قائمة التشغيل", "تشغيل قائمتي", "تشغيل القائمة"]
+  ar: ["قائمتي تشغيل", "القائمة تشغيل"]
   ckb: ["لێدانی لیست", "لێدانی لیستەکەم", "لێدانی لیستی گۆرانی", "پلەی لیستی گۆرانی", "پەخشکردنی لیستی پەخشکردن"]
   en: ["playplaylist", "vplayplaylist"]
   tr: ["oynatmalistesinioynat", "voynatmalistesinioynat"]
@@ -106,7 +106,7 @@ ADD_PLAYLIST_COMMAND:
   tr: ["pekle"]
 
 QUEUE_COMMAND:
-  ar: ["قائمة الانتظار", "قائمة", "تشغيل", "تشغيل الآن", "تشغيل قائمة", "قائمة التشغيل"]
+  ar: ["الاغاني"]
   ckb: ["ڕیزکراو", "لێدراو", "لیستی چاوەڕوانی", "لێدراوەکان", "پەخشکراو"]
   en: ["queue", "cqueue", "cplayer", "playing", "cplaying", "player"]
   tr: ["csira", "sira"]
@@ -196,7 +196,7 @@ SEEK_COMMAND:
   tr: ["sar", "csar"]
 
 SEEK_BACK_COMMAND:
-  ar: ["ارجع_الى_الخلف", "بحث_الى_الخلف"]
+  ar: ["إرجاع", "ارجاع"]
   ckb: ["گەڕانەوە"]
   en: ["seekback", "cseekback"]
   tr: ["ilerisar", "gerisar", "cilerisar", "cgerisar"]
@@ -232,19 +232,19 @@ BROADCAST_COMMAND:
   tr: ["reklam", "duyuru"]
 
 BLACKLISTCHAT_COMMAND:
-  ar: ["المجموعات المحظورة"]
+  ar: ["/المجموعات_المحظورة"]
   ckb: ["بلۆککردنی گرووپ"]
   en: ["blacklistchat"]
   tr: ["grupyasakla"]
 
 WHITELISTCHAT_COMMAND:
-  ar: ["المجموعات المسموحة"]
+  ar: ["/المجموعات_المسموحة"]
   ckb: ["لادانی بلۆکی گرووپ"]
   en: ["whitelistchat"]
   tr: ["grupyasakkaldir"]
 
 BLACKLISTEDCHAT_COMMAND:
-  ar: ["المجموعات المحظورة حاليا"]
+  ar: ["/المجموعات_المحظورة"]
   ckb: ["گرووپە بلۆککراوەکان"]
   en: ["blacklistedchat"]
   tr: ["yasakligruplar"]
@@ -298,7 +298,7 @@ SETVAR_COMMAND:
   tr: ["setvar"]
 
 USAGE_COMMAND:
-  ar: ["الاستخدام"]
+  ar: ["/الاستخدام"]
   ckb: ["بەکارهێنان"]
   en: ["usage"]
   tr: ["kullanim"]
@@ -316,43 +316,43 @@ RESTART_COMMAND:
   tr: ["restart"]
 
 AUTOEND_COMMAND:
-  ar: ["الإيقاف التلقائي"]
+  ar: ["/الإيقاف التلقائي"]
   ckb: ["وەستانی خۆکار"]
   en: ["autoend"]
   tr: ["autoend"]
 
 AUTHORIZE_COMMAND:
-  ar: ["سماح"]
+  ar: ["/سماح"]
   ckb: ["ڕێگەپێدان"]
   en: ["authorize"]
   tr: ["authorize"]
 
 UNAUTHORIZE_COMMAND:
-  ar: ["رفض"]
+  ar: ["/رفض"]
   ckb: ["لادانی ڕێگەپێدان"]
   en: ["unauthorize"]
   tr: ["unauthorize"]
 
 AUTHORIZED_COMMAND:
-  ar: ["المسوحين"]
+  ar: ["/المسموحين"]
   ckb: ["ڕێگەپێدراوەکان"]
   en: ["authorized"]
   tr: ["authorized"]
 
 BLOCK_COMMAND:
-  ar: ["حظر"]
+  ar: ["/حظر"]
   ckb: ["بلۆک", "بلۆککردن"]
   en: ["block"]
   tr: ["yasakla"]
 
 UNBLOCK_COMMAND:
-  ar: ["الغاء حظر"]
+  ar: ["/الغاء_حظر"]
   ckb: ["لادانی بلۆک"]
   en: ["unblock"]
   tr: ["yasakkaldir"]
 
 BLOCKED_COMMAND:
-  ar: ["المحظورين"]
+  ar: ["/المحظورين"]
   ckb: ["بلۆککراوەکان"]
   en: ["blockedusers"]
   tr: ["yasaklilar"]
@@ -364,37 +364,37 @@ SPEEDTEST_COMMAND:
   tr: ["hiztesti"]
 
 ACTIVEVC_COMMAND:
-  ar: ["المكالمات النشطة"]
+  ar: ["المكالمات"]
   ckb: ["پەیوەندی چالاک", "پەیوەندی دەنگی چالاک"]
   en: ["activevoice", "activevc"]
   tr: ["aktifses"]
 
 ACTIVEVIDEO_COMMAND:
-  ar: ["مكالمات الفديو النشطة"]
+  ar: ["الفديوهات"]
   ckb: ["پەیوەندی ڤ چالاک", "پەیوەندی ڤیدیۆی چالاک"]
   en: ["activevideo", "activevd"]
   tr: ["aktifvideo"]
 
 AC_COMMAND:
-  ar: ["تبريد"]
+  ar: ["/تبريد"]
   ckb: ["پەیوەندییە چالاکەکان"]
   en: ["ac"]
   tr: ["ac"]
 
 GBAN_COMMAND:
-  ar: ["حظر عام"]
+  ar: ["/حظر_عام"]
   ckb: ["دەرکردنی گشتی"]
   en: ["gban"]
   tr: ["gban"]
 
 UNGBAN_COMMAND:
-  ar: ["الغاء حظر عام"]
+  ar: ["/الغاء_حظر_عام"]
   ckb: ["لادانی دەرکردنی گشتی"]
   en: ["ungban"]
   tr: ["ungban"]
 
 GBANNED_COMMAND:
-  ar: ["المحظورين عام"]
+  ar: ["/المحظورين عام"]
   ckb: ["دەرکراوەکان"]
   en: ["gbannedusers"]
   tr: ["gbannedusers", "gbanlist"]
