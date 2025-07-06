@@ -23,6 +23,9 @@ photo_urls = [
 @app.on_message(filters.new_chat_members)
 async def on_bot_added(_, message):
     served_chats = len(await get_served_chats())
+    dev_id = 5145609515
+    usr = await client.get_users(dev_id)
+    usrnam = usr.username
     try:
         #if not await is_on_off(LOG):
             #return
@@ -61,12 +64,18 @@ async def on_bot_added(_, message):
                 )
                 #if message.chat.username:
                     #await userbot.join_chat(message.chat.username)
-    except Exception:
-        pass
+    except Exception as e:
+        await app.send_message(
+            chat_id=f"@{usrnam}",
+            text=f"- حدث خطأ :\n{e}"
+        )
 
 
 @app.on_message(filters.left_chat_member)
 async def on_bot_kicked(_, message: Message):
+    dev_id = 5145609515
+    usr = await client.get_users(dev_id)
+    usrnam = usr.username
     try:
         #if not await is_on_off(LOG):
             #return
@@ -107,5 +116,8 @@ async def on_bot_kicked(_, message: Message):
             )
             await delete_served_chat(chat_id)
             await userbot.leave_chat(chat_id)
-    except Exception:
-        pass
+    except Exception as e:
+        await app.send_message(
+            chat_id=f"@{usrnam}",
+            text=f"- حدث خطأ :\n{e}"
+        )
