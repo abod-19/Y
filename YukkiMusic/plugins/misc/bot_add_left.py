@@ -3,7 +3,7 @@
 
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from ZeMusic.utils.database import get_served_chats
+from YukkiMusic.utils.database import get_served_chats
 from config import LOG, LOG_GROUP_ID
 from YukkiMusic import app
 from YukkiMusic.utils.database import (
