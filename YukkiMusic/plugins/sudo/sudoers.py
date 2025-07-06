@@ -24,15 +24,18 @@ from YukkiMusic.utils.decorators.language import language
 async def useradd(client, message: Message, _):
     if MONGO_DB_URI is None:
         return await message.reply_text(
-            "**Due to privacy issues, You can't manage sudoers when you are on Yukki Database.\n\n Please fill Your MONGO_DB_URI in your vars to use this features**"
+            "**- لا توجد لديك قاعدة بيانات لا يمكن رفع مطورين.**"
         )
     if not message.reply_to_message:
-        if len(message.command) != 2:
-            return await message.reply_text(_["general_1"])
+        if len(message.command) != 3:
+            return #await message.reply_text(_["general_1"])
         user = message.text.split(None, 1)[1]
         if "@" in user:
             user = user.replace("@", "")
-        user = await app.get_users(user)
+        try:
+            user = await app.get_users(user)
+        except Exception:
+            return
         if user.id in SUDOERS:
             return await message.reply_text(_["sudo_1"].format(user.mention))
         added = await add_sudo(user.id)
@@ -62,15 +65,18 @@ async def useradd(client, message: Message, _):
 async def userdel(client, message: Message, _):
     if MONGO_DB_URI is None:
         return await message.reply_text(
-            "**Due to privacy issues, You can't manage sudoers when you are on Yukki Database.\n\n Please fill Your MONGO_DB_URI in your vars to use this features**"
+            "**- لا توجد لديك قاعدة بيانات.**"
         )
     if not message.reply_to_message:
         if len(message.command) != 2:
-            return await message.reply_text(_["general_1"])
+            return #await message.reply_text(_["general_1"])
         user = message.text.split(None, 1)[1]
         if "@" in user:
             user = user.replace("@", "")
-        user = await app.get_users(user)
+        try:
+            user = await app.get_users(user)
+        except Exception:
+            return
         if user.id not in SUDOERS:
             return await message.reply_text(_["sudo_3"])
         removed = await remove_sudo(user.id)
@@ -103,7 +109,7 @@ async def sudoers_list(client, message: Message, _):
             count += 1
         except Exception:
             continue
-        text += f"{count}➤ {user} (`{x}`)\n"
+        text += f"{count} - {user} ( `{x}` )\n"
     smex = 0
     for user_id in SUDOERS:
         if user_id not in OWNER_ID:
@@ -114,7 +120,7 @@ async def sudoers_list(client, message: Message, _):
                     smex += 1
                     text += _["sudo_6"]
                 count += 1
-                text += f"{count}➤ {user} (`{user_id}`)\n"
+                text += f"{count} - {user} ( `{user_id}` )\n"
             except Exception:
                 continue
     if not text:
