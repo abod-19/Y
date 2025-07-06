@@ -199,9 +199,9 @@ async def stream(
             )
             position = len(db.get(chat_id)) - 1
             qimg = await gen_qthumb(vidid, thumbnail)
-            run = await app.send_photo(
+            run = await app.send_message(
                 original_chat_id,
-                photo=qimg,
+                #photo=qimg,
                 caption=_["queue_4"].format(
                     position, title[:27], duration_min, user_name
                 ),
@@ -264,9 +264,9 @@ async def stream(
                     url=link,
                 )
                 position = len(db.get(chat_id)) - 1
-                await app.send_photo(
+                await app.send_message(
                     original_chat_id,
-                    photo=thumb or "https://envs.sh/Ii_.jpg",
+                    #photo=thumb or "https://envs.sh/Ii_.jpg",
                     caption=_["queue_4"].format(
                         position, title[:30], duration_min, user_name
                     ),
