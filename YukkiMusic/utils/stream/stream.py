@@ -202,7 +202,7 @@ async def stream(
             run = await app.send_message(
                 original_chat_id,
                 #photo=qimg,
-                caption=_["queue_4"].format(
+                text=_["queue_4"].format(
                     position, title[:27], duration_min, user_name
                 ),
                 reply_markup=close_markup(_),
@@ -267,7 +267,7 @@ async def stream(
                 await app.send_message(
                     original_chat_id,
                     #photo=thumb or "https://envs.sh/Ii_.jpg",
-                    caption=_["queue_4"].format(
+                    text=_["queue_4"].format(
                         position, title[:30], duration_min, user_name
                     ),
                     reply_markup=close_markup(_),
