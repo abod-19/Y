@@ -136,7 +136,7 @@ UNAUTH_COMMAND:
   tr: ["yetkial"]
 
 AUTHUSERS_COMMAND:
-  ar: ["الادمنيه/", "/الادمن"]
+  ar: ["/الادمنيه", "/الادمن"]
   ckb: ["ئەدمینەکان"]
   en: ["authusers"]
   tr: ["yetkililer"]
@@ -202,33 +202,33 @@ SEEK_BACK_COMMAND:
   tr: ["ilerisar", "gerisar", "cilerisar", "cgerisar"]
 
 REBOOT_COMMAND:
-  ar: ["اعاده تشغيل"]
+  ar: ["ريبوت"]
   ckb: ["ڕێستارت"]
   en: ["reboot"]
   tr: ["yenidenbaslat"]
 
 ADDSUDO_COMMAND:
-  ar: ["رفع مطور"]
+  ar: ["/رفع مطور"]
   ckb: ["زیادکردنی گەشەپێدەر"]
-  en: ["addsudo"]
+  en: ["/addsudo"]
   tr: ["sudoekle"]
 
 DELSUDO_COMMAND:
-  ar: ["تنزيل مطور"]
+  ar: ["/تنزيل مطور"]
   ckb: ["لادانی گەشەپێدەر"]
   en: ["delsudo"]
   tr: ["sudosil"]
 
 SUDOUSERS_COMMAND:
-  ar: ["المطورين"]
+  ar: ["/المطورين"]
   ckb: ["گەشەپێدەرەکان"]
   en: ["sudolist"]
   tr: ["sudolistesi"]
 
 BROADCAST_COMMAND:
-  ar: ["اذاعة"]
+  ar: ["/اذاعة"]
   ckb: ["ناردن", "ڕێکلام", "پەخش", "ناردنی"]
-  en: ["broadcast", "gcast"]
+  en: ["/broadcast", "/gcast"]
   tr: ["reklam", "duyuru"]
 
 BLACKLISTCHAT_COMMAND:
@@ -274,25 +274,25 @@ LOGGER_COMMAND:
   tr: ["logger"]
 
 GETLOG_COMMAND:
-  ar: ["سجل"]
+  ar: ["السجلات"]
   ckb: ["لۆگ", "لۆگەکان", "هێنانی لۆگ"]
   en: ["log", "logs", "get_log", "getlog", "get_logs", "getlogs"]
   tr: ["log"]
 
 GETVAR_COMMAND:
-  ar: ["جلب فار"]
+  ar: ["جلب_فار"]
   ckb: ["ڤارەکان", "هێنانی ڤار"]
   en: ["get_var", "getvar"]
   tr: ["get_var", "getvar"]
 
 DELVAR_COMMAND:
-  ar: ["حذف فار"]
+  ar: ["حذف_فار"]
   ckb: ["سرینەوەی ڤار", "سڕینەوەی ڤار"]
   en: ["del_var", "delvar"]
   tr: ["del_var", "delvar"]
 
 SETVAR_COMMAND:
-  ar: ["تعيين فار"]
+  ar: ["تعيين_فار"]
   ckb: ["دانانی_ڤار", "دانانی ڤار"]
   en: ["set_var", "setvar"]
   tr: ["setvar"]
@@ -304,9 +304,9 @@ USAGE_COMMAND:
   tr: ["kullanim"]
 
 UPDATE_COMMAND:
-  ar: ["تحديث"]
+  ar: ["/تحديث"]
   ckb: ["نوێکردنەوە", "up"]
-  en: ["update", "gitpull", "up"]
+  en: ["/update", "/gitpull", "/up"]
   tr: ["guncelle"]
 
 RESTART_COMMAND:
