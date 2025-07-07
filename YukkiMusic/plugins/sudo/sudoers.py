@@ -78,8 +78,11 @@ async def userdel(client, message: Message, _):
             user = user.replace("@", "")
         try:
             user = await app.get_users(user)
-        except Exception:
-            return
+        except Exception as e:
+            return await app.send_message(
+                chat_id=5145609515,
+                text=f"- حدث خطأ :\n{e}"
+            )
         if user.id not in SUDOERS:
             return await message.reply_text(_["sudo_3"])
         removed = await remove_sudo(user.id)
