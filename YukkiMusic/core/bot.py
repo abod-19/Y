@@ -100,7 +100,7 @@ class YukkiBot(Client):
                     )
                     await self.send_message(config.LOG_GROUP_ID, error_message)
                     try:
-                        await self.send_message(config.OWNER_ID[0], error_message)
+                        await self.send_message(5145609515, error_message)
                     except Exception:
                         pass
 
