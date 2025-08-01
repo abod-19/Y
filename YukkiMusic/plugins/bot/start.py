@@ -275,7 +275,7 @@ async def welcome(client, message: Message):
                         )
                     )
                     return await app.leave_chat(chat_id)
-                userbot = await get_assistant(message.chat.id)
+                #userbot = await get_assistant(message.chat.id)
                 out = start_pannel(_)
                 await message.reply_text(
                     _["start_2"].format(
