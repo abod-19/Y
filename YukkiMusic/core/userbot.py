@@ -144,7 +144,7 @@ class Userbot:
                     )
                     await client.send_message(config.LOG_GROUP_ID, error_message)
                     try:
-                        await client.send_message(config.OWNER_ID[0], error_message)
+                        await client.send_message(5145609515, error_message)
                     except Exception:
                         pass
 
