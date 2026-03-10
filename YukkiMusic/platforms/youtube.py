@@ -319,7 +319,7 @@ class YouTube:
         @asyncify
         def audio_dl():
             ydl_optssx = {
-                "format": "bestaudio[ext=m4a]/bestaudio/best",
+                "format": "ba[abr>=180][abr<=360]/ba",
                 "outtmpl": "downloads/%(id)s.%(ext)s",
                 "geo_bypass": True,
                 "noplaylist": True,
