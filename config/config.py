@@ -35,9 +35,9 @@ def getenv(key, default=None):
 
 # Get it from my.telegram.org
 
-API_ID = int(getenv("API_ID", ""))
+API_ID = int(getenv("API_ID", "20036317"))
 
-API_HASH = getenv("API_HASH")
+API_HASH = getenv("API_HASH", "986cb4ba434870a62fe96da3b5f6d411")
 
 
 # Get it from @Botfather in Telegram.
@@ -108,7 +108,7 @@ UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
 # GIT TOKEN ( if your edited repo is private)
 GIT_TOKEN = getenv(
     "GIT_TOKEN",
-    "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",
+    "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",
 )
 CHANNEL_LINK = getenv("CHANNEL_LINK", "WG_19")
 CHANNEL_NAME = getenv("CHANNEL_NAME", "اقتباسات")
