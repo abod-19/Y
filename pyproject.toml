@@ -46,7 +46,7 @@ dependencies = [
     "uvloop==0.21.0",
     "Flask==3.1.1",
     "gunicorn==23.0.0",
-    "yt-dlp",
+    "yt-dlp @ git+https://github.com/yt-dlp/yt-dlp.git@master",
     "py-yt-search==0.3",
     "PyYAML==6.0.2",
     "lexica-api",
