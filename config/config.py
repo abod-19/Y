@@ -45,7 +45,7 @@ BOT_TOKEN = getenv("BOT_TOKEN")
 BOT_NAME = getenv("BOT_NAME","رونا")
 GPT_NAME = getenv("GPT_NAME","رون")
 # Database to save your chats and stats... Get MongoDB:-  https://telegra.ph/How-To-get-Mongodb-URI-04-06
-MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://Music:Music@cluster0.yjgit72.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://ABOOD:ABOOD@cluster0.eciuroy.mongodb.net/?appName=Cluster0")
 
 # Your cookies pasted link on batbin.me
 # you can skip if you are adding cookies
